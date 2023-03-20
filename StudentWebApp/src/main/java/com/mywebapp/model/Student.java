@@ -3,28 +3,28 @@ package com.mywebapp.model;
 public class Student {
 
 	private int id;
-	private String firstname;
-	private String lastname;
+	private String firstName;
+	private String lastName;
 	private String email;
 	
 	public Student(String firstname, String lastname, String email) {
 		super();
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.firstName = firstname;
+		this.lastName = lastname;
 		this.email = email;
 	}
 	
 	public Student(int id, String firstname, String lastname, String email) {
 		super();
 		this.id = id;
-		this.firstname = firstname;
-		this.lastname = lastname;
+		this.firstName = firstname;
+		this.lastName = lastname;
 		this.email = email;
 	}
 	
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email + "]";
+		return "Student [id=" + id + ", firstname=" + firstName + ", lastname=" + lastName + ", email=" + email + "]";
 	}
 	
 	public int getId() {
@@ -36,19 +36,19 @@ public class Student {
 	}
 	
 	public String getFirstname() {
-		return firstname;
+		return firstName;
 	}
 	
 	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+		this.firstName = firstname;
 	}
 	
 	public String getLastname() {
-		return lastname;
+		return lastName;
 	}
 	
 	public void setLastname(String lastname) {
-		this.lastname = lastname;
+		this.lastName = lastname;
 	}
 	
 	public String getEmail() {

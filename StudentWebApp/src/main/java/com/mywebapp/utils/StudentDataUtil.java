@@ -97,10 +97,10 @@ public class StudentDataUtil {
 		
 		try {
 			con = this.datasource.getConnection();
-			String sql="delete from student where id=?";
+			String sql="select * from student where id=?";
 			stmt = con.prepareStatement(sql);
 			stmt.setInt(1, studentId);
-			ResultSet resultSet = stmt.executeQuery(sql);
+			ResultSet resultSet = stmt.executeQuery();
 			
 			while(resultSet.next()) {
 				int id = resultSet.getInt("id");
@@ -120,7 +120,7 @@ public class StudentDataUtil {
 		return student;
 	}
 
-	public void updateStudent(int studentId, String firstname, String lastname, String email) {
+	public void updateStudent(int studentId, String firstName, String lastName, String email) {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		
@@ -128,11 +128,34 @@ public class StudentDataUtil {
 			con = this.datasource.getConnection();
 			String sql="update student set first_name=?, last_name=?, email=? where id=?";
 			stmt = con.prepareStatement(sql);
+			
+			stmt.setString(1, firstName);
+			stmt.setString(2, lastName);
+			stmt.setString(3, email);
+			stmt.setInt(4, studentId);
+			
+			stmt.execute();
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			close(con,stmt,null);
+		}
+	}
+	
+	
+	public void addStudent(String firstname, String lastname, String email) {
+		Connection con = null;
+		PreparedStatement stmt = null;
+		
+		try {
+			con = this.datasource.getConnection();
+			String sql="insert into student (first_name,last_name,email)" + "values(?,?,?)";
+			stmt = con.prepareStatement(sql);
 	
 			stmt.setString(1, firstname);
 			stmt.setString(2, lastname);
 			stmt.setString(3, email);
-			stmt.setInt(4, studentId);
 			
 			stmt.execute();
 		}catch (SQLException e) {
