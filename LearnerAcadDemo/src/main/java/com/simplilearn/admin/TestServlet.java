@@ -47,7 +47,7 @@ public class TestServlet extends HttpServlet {
 		
 		try {
 			
-			myConn = DriverManager.getConnection("jdbc:mysql://localhost/learnerPrj","root","root");
+			myConn = DriverManager.getConnection("jdbc:mysql://localhost/learnerprj","root","root");
 		//create a sql statement
 		String sql = "select * from students";
 		myStmt = myConn.createStatement();
